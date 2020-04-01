@@ -1,3 +1,15 @@
 p {
   font-family: Lato;
 }
+
+.innocv-logo img {
+  width: 6rem;
+}
+
+.text-dark-gray {
+  color: #666;
+}
+
+.card-as-link {
+  cursor: pointer;
+}
