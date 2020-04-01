@@ -1,0 +1,20 @@
+
+.text-dark-gray {
+  color: #666;
+}
+
+.card-as-link {
+  cursor: pointer;
+  width: 18rem;
+}
+
+.card-options-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card-disabled {
+  opacity: 0.7;
+  cursor: not-allowed !important;
+}

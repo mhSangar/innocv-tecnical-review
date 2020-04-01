@@ -1,20 +1,27 @@
-<app-navbar>
+<app-navbar></app-navbar>
 
-<p>
-  home page is working :D
-</p>
+<div class="card-options-container m-4">
 
-<button class="btn btn-primary mx-1 px-4" routerLink="/presentation">Presentation</button>
-<button class="btn btn-primary mx-1 px-4" routerLink="/user">User</button>
+	<div class="card bg-dark text-light m-2 card-as-link" routerLink="/user">
+		<div class="card-header">
+			<fa-icon [icon]="faUser" class="mr-1"></fa-icon>
+			Users
+		</div>
+		<div class="card-body">
+			<h5 class="card-title">User Entity</h5>
+			<p class="card-text">Select this option to navigate to the requested CRUD.</p>
+		</div>
+	</div>
 
+	<div class="card bg-light m-2 card-as-link card-disabled">
+		<div class="card-header text-dark-gray">
+			<fa-icon [icon]="faPlus" class="mr-1"></fa-icon>
+			Another
+		</div>
+		<div class="card-body text-dark-gray">
+			<h5 class="card-title">Another Entity</h5>
+			<p class="card-text">Select this option to navigate to another entity (disabled).</p>
+		</div>
+	</div>
 
-<div class="card bg-light mb-3 card-as-link" style="max-width: 18rem;" routerLink="/user">
-  <div class="card-header text-dark-gray">
-    <fa-icon [icon]="faUser" class="mr-1"></fa-icon>
-    Users
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">User Entity</h5>
-    <p class="card-text">Select this option to navigate to the main app.</p>
-  </div>  
 </div>

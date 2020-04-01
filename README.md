@@ -1,4 +1,4 @@
-# innocv-tecnical-review
+# innocv-technical-review
 
 A "Take home project" for the interview with InnoCV.
 

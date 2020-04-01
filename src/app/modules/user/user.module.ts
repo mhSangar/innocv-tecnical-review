@@ -1,18 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { UsersRoutingModule } from './user-routing.module';
-import { UserListComponent } from './user-list/user-list.component';
+import { SharedModule } from "../shared/shared.module";
+import { UsersRoutingModule } from "./user-routing.module";
+import { UserListComponent } from "./user-list/user-list.component";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    UsersRoutingModule
-  ],
-  declarations: [UserListComponent]
+  imports: [CommonModule, UsersRoutingModule, SharedModule],
+  declarations: [UserListComponent],
+  bootstrap: [UserListComponent]
 })
-export class UserModule { }
-
+export class UserModule {}
 
 /*
 Copyright 2017-2018 Google Inc. All Rights Reserved.

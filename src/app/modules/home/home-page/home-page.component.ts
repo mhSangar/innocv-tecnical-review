@@ -1,23 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit } from "@angular/core";
+import { faUser, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  selector: "app-home-page",
+  templateUrl: "./home-page.component.html",
+  styleUrls: ["./home-page.component.css"]
 })
 export class HomePageComponent implements OnInit {
-
   faUser = faUser;
+  faPlus = faPlus;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
-
+  ngOnInit() {}
 }
-
 
 /*
 Copyright 2017-2018 Google Inc. All Rights Reserved.
