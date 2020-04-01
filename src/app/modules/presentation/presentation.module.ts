@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { SharedModule } from "../shared/shared.module";
 import { PresentationRoutingModule } from './presentation-routing.module';
@@ -9,6 +10,7 @@ import { PresentationPageComponent } from './presentation-page/presentation-page
   imports: [
     CommonModule,
     PresentationRoutingModule,
+    FontAwesomeModule,
     SharedModule
   ],
   declarations: [PresentationPageComponent]
