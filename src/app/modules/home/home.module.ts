@@ -4,6 +4,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomePageComponent } from './home-page/home-page.component';
+import { NavBarComponent } from '../shared/navbar/navbar.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     HomeRoutingModule,
     FontAwesomeModule
   ],
-  declarations: [HomePageComponent]
+  declarations: [HomePageComponent, NavBarComponent]
 })
 export class HomeModule { }
 

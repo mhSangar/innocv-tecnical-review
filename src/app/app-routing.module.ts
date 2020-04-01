@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 const routes: Routes = [
   {
     path: 'presentation',
-    loadChildren: './presentation/presentation.module#PresentationModule'
+    loadChildren: './modules/presentation/presentation.module#PresentationModule'
   },
   {
     path: 'user',
-    loadChildren: './user/user.module#UserModule'
+    loadChildren: './modules/user/user.module#UserModule'
   },
   {
     path: '',
@@ -21,7 +21,7 @@ const routes: Routes = [
         path: '', pathMatch: 'full', redirectTo: 'home'
       },
       {
-        path: 'home', loadChildren: './home/home.module#HomeModule'
+        path: 'home', loadChildren: './modules/home/home.module#HomeModule'
       }
     ]
   }
