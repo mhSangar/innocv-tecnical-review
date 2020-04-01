@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 152.6 30" style="enable-background:new 0 0 152.6 30;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{display:inline;fill:#1C1209;stroke:#000000;stroke-miterlimit:10;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:url(#logo_icon_1_);}
+</style>
+<g id="Layer_2" class="st0">
+	<rect x="-39.4" y="-28.4" class="st1" width="476.2" height="79.8"/>
+</g>
+<g id="Layer_3">
+	
+		<linearGradient id="logo_icon_1_" gradientUnits="userSpaceOnUse" x1="-359.5804" y1="426.3541" x2="-358.5804" y2="426.3541" gradientTransform="matrix(150.1172 0 0 -28.1257 53980.4375 12006.5039)">
+		<stop  offset="0" style="stop-color:#325C7F"/>
+		<stop  offset="0.3005" style="stop-color:#6D5A7F"/>
+		<stop  offset="0.5643" style="stop-color:#C06C86"/>
+		<stop  offset="0.7894" style="stop-color:#F17680"/>
+		<stop  offset="1" style="stop-color:#F8B18E"/>
+	</linearGradient>
+	<path id="logo_icon" class="st2" d="M120,0.9c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1V0.9z M88.4,0.9
+		c-7.8,0-14.1,6.3-14.1,14.1c0,7.8,6.3,14.1,14.1,14.1s14.1-6.3,14.1-14.1C102.4,7.2,96.1,0.9,88.4,0.9z M42.6,0.9l28.2,28.1V0.9
+		H42.6z M11.3,0.9l28.2,28.1V0.9H11.3z M1.2,29.1h6.9V0.9H1.2V29.1z M123.2,0.9l14.1,28.1l14.1-28.1H123.2z"/>
+</g>
+</svg>
