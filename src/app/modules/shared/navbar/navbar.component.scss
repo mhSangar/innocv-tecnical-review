@@ -1,0 +1,19 @@
+.innocv-logo {
+  img {
+    width: 6rem;
+  }
+}
+
+.social-link {
+  text-decoration: none;
+  color: rgba(0,0,0,.9);
+
+  fa-icon {
+    font-size: 1.25rem; 
+    transition: all .3s;
+
+    &:hover {
+      color: #f48c85;
+    }
+  }
+}
