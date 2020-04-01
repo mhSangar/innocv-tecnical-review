@@ -1,40 +1,42 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
 
 const routes: Routes = [
   {
-    path: 'presentation',
-    loadChildren: './modules/presentation/presentation.module#PresentationModule'
+    path: "home",
+    loadChildren: "./modules/home/home.module#HomeModule"
   },
   {
-    path: 'user',
-    loadChildren: './modules/user/user.module#UserModule'
+    path: "user",
+    loadChildren: "./modules/user/user.module#UserModule"
   },
   {
-    path: '',
+    path: "",
     component: AppComponent,
-    pathMatch: 'prefix',
+    pathMatch: "prefix",
     children: [
       {
-        path: '', pathMatch: 'full', redirectTo: 'home'
+        path: "",
+        pathMatch: "full",
+        redirectTo: "presentation"
       },
       {
-        path: 'home', loadChildren: './modules/home/home.module#HomeModule'
+        path: "presentation",
+        loadChildren:
+          "./modules/presentation/presentation.module#PresentationModule"
       }
     ]
   }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes)
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
 
 /*
 Copyright 2017-2018 Google Inc. All Rights Reserved.
