@@ -1,1 +1,9 @@
+<h1>{{ 'PRESENTATION.FOO' | transloco }}</h1>
+
+<p>
+  <select (change)="updateLocale($event.target.value)" class="select-css">
+    <option *ngFor="let l of locales" [value]="l.value" [selected]="l.value === locale">{{ l.label }}</option>
+  </select>
+</p>
+
 <router-outlet></router-outlet>
