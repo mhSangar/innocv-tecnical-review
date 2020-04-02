@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { TRANSLOCO_SCOPE, TranslocoModule } from '@ngneat/transloco';
 
 import { SharedModule } from "../shared/shared.module";
 import { PresentationRoutingModule } from './presentation-routing.module';
@@ -11,9 +12,13 @@ import { PresentationPageComponent } from './presentation-page/presentation-page
     CommonModule,
     PresentationRoutingModule,
     FontAwesomeModule,
+    TranslocoModule,
     SharedModule
   ],
-  declarations: [PresentationPageComponent]
+  declarations: [PresentationPageComponent],
+  providers: [
+    { provide: TRANSLOCO_SCOPE, useValue: 'presentation' }
+  ]
 })
 export class PresentationModule { }
 

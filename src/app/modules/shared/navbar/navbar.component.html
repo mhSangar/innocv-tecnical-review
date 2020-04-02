@@ -1,10 +1,15 @@
 <nav class="navbar navbar-light bg-light fixed-nav flex-nowrap">
-	<a class="navbar-brand innocv-logo display-1" href="#" routerLink="/">
+	<a class="navbar-brand innocv-logo display-1" href="#" routerLink="/" *transloco="let t">
 		<img src="https://i.ibb.co/ZTr9PYz/innocv-logo.png" class="d-inline-block align-center mr-2" alt="InnoCV Logo">
-    Technical test
+    {{ t('navbar.title') }}
   </a>
 
 		<div class="d-flex flex-row">
+			<img class="lang-option" (click)="updateLang('es')" src="https://cdn1.iconfinder.com/data/icons/ensign-11/512/242_Ensign_Flag_Nation_spain-512.png">
+			<img class="lang-option mx-1" (click)="updateLang('en')" src="https://cdn1.iconfinder.com/data/icons/ensign-11/512/273_Ensign_Flag_Nation_kingdom-512.png">
+
+      <div class="separator mx-1"></div>
+
 			<a class="social-link mx-1" href="https://github.com/mhSangar" target="_blank">
 				<fa-icon [icon]="faGithub"></fa-icon>
 			</a>

@@ -9,7 +9,7 @@ import { TranslocoService } from "@ngneat/transloco";
 export class AppComponent {
   // the locales the app supports
   locales = [
-    { label: "🇬🇧 English (UK)", value: "en-GB" },
+    { label: "🇬🇧 English (UK)", value: "en" },
     { label: "ES Español", value: "es" }
   ];
   // the user's locale
@@ -18,7 +18,7 @@ export class AppComponent {
   locale = this.locales[0].value;
 
   constructor(private translocoService: TranslocoService) {
-    this.detectedLocale = this.getUsersLocale("en-GB");
+    this.detectedLocale = this.getUsersLocale("en-GB").substring(0, 2);
 
     // generate a regex from the locales we support
     const supportedRegex = new RegExp(
@@ -26,7 +26,7 @@ export class AppComponent {
     );
     // check if the user's preferred language is supported and if so, use it.
     if (this.detectedLocale.match(supportedRegex)) {
-      this.updateLocale(this.detectedLocale);
+      this.updateLocale(this.detectedLocale.substring(0, 2));
     }
   }
 
@@ -45,11 +45,14 @@ export class AppComponent {
   
   // change locale/language at runtime
   updateLocale(locale) {
-    console.log("update locale", locale);
+    console.log("%c 🍻 Updated language to " + locale, 'color: #e2932d');
+
     if (this.locales.some(l => l.value === locale)) {
       this.locale = locale;
     }
     const lang = locale.substring(0, 2);
+
+    console.log({lang: lang})
     this.translocoService.setActiveLang(lang);
   }
 }

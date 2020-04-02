@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { TranslocoService } from "@ngneat/transloco";
 
 @Component({
   selector: "app-navbar",
@@ -9,10 +10,20 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 export class NavBarComponent implements OnInit {
   faGithub = faGithub;
   faLinkedin = faLinkedin;
+  locales = [
+    { label: "🇬🇧 English (UK)", value: "en" },
+    { label: "ES Español", value: "es" }
+  ];
 
-  constructor() {}
+  constructor(private service: TranslocoService) {}
 
   ngOnInit() {}
+
+  updateLang(lang: string) {
+    console.log("%c 🍻 Updated language to " + lang, 'color: #e2932d');
+
+    this.service.setActiveLang(lang);
+  }
 }
 
 /*

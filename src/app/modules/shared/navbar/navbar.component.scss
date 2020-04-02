@@ -1,6 +1,6 @@
 .innocv-logo {
   img {
-    width: 6rem;
+    width: 5rem;
   }
 }
 
@@ -16,6 +16,18 @@
       color: #f48c85;
     }
   }
+}
+
+.lang-option {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.separator {
+  height: 2rem;
+  width: 2px;
+  background: #ccc;
 }
 
 .nav-placeholder-height {
