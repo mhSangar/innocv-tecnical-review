@@ -1,5 +1,6 @@
 {
   "greeting": "Hello there!",
   "description": "I'm Mario and this is my solution for the Take Home project proposed by InnoCV for a technical interview. I hope you find it useful and correct according to the specifications.",
-  "bye": "See you around! 😊"
+  "bye": "See you around! 😊",
+  "goToHomeBtn": "Go to Home"
 }

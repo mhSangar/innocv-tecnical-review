@@ -1,0 +1,12 @@
+{
+  "users": {
+    "label": "Users",
+    "title": "User Entity",
+    "description": "Select this option to navigate to the requested CRUD application."
+  },
+  "another": {
+    "label": "Another",
+    "title": "Another Entity",
+    "description": "Select this option to navigate to another entity (disabled)."
+  }
+}

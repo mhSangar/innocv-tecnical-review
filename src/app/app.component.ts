@@ -18,15 +18,15 @@ export class AppComponent {
   locale = this.locales[0].value;
 
   constructor(private translocoService: TranslocoService) {
-    this.detectedLocale = this.getUsersLocale("en-GB").substring(0, 2);
+    this.detectedLocale = this.getUsersLocale("en-GB");
 
     // generate a regex from the locales we support
     const supportedRegex = new RegExp(
-      "^" + this.locales.map(l => l.value.substring(0, 2)).join("|^")
+      "^" + this.locales.map(l => l.value).join("|^")
     );
     // check if the user's preferred language is supported and if so, use it.
     if (this.detectedLocale.match(supportedRegex)) {
-      this.updateLocale(this.detectedLocale.substring(0, 2));
+      this.updateLocale(this.detectedLocale);
     }
   }
 
@@ -40,7 +40,7 @@ export class AppComponent {
     const wn = window.navigator as any;
     let lang = wn.languages ? wn.languages[0] : defaultValue;
     lang = lang || wn.language || wn.browserLanguage || wn.userLanguage;
-    return lang;
+    return lang.substring(0, 2);
   }
   
   // change locale/language at runtime

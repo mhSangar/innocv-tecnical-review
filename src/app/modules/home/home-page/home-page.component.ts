@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { faUser, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { TranslocoService } from "@ngneat/transloco";
 
 @Component({
   selector: "app-home-page",
@@ -10,7 +11,7 @@ export class HomePageComponent implements OnInit {
   faUser = faUser;
   faPlus = faPlus;
 
-  constructor() {}
+  constructor(private service: TranslocoService) {}
 
   ngOnInit() {}
 }

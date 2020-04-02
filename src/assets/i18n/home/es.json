@@ -1,0 +1,12 @@
+{
+  "users": {
+    "label": "Usuarios",
+    "title": "Entidad Usuario",
+    "description": "Seleccione esta opción para navegar a la aplicación CRUD requerida."
+  },
+  "another": {
+    "label": "Otro",
+    "title": "Otra Entidad",
+    "description": "Seleccione esta opción para navegar a otra entidad (deshabilitada)."
+  }
+}

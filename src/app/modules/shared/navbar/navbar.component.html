@@ -1,12 +1,14 @@
 <nav class="navbar navbar-light bg-light fixed-nav flex-nowrap">
-	<a class="navbar-brand innocv-logo display-1" href="#" routerLink="/" *transloco="let t">
-		<img src="https://i.ibb.co/ZTr9PYz/innocv-logo.png" class="d-inline-block align-center mr-2" alt="InnoCV Logo">
-    {{ t('navbar.title') }}
-  </a>
+  <ng-container *transloco="let t; read: 'navbar'">
+    <a class="navbar-brand innocv-logo display-1" href="#" routerLink="/home">
+      <img src="https://i.ibb.co/ZTr9PYz/innocv-logo.png" class="d-inline-block align-center mr-2" alt="InnoCV Logo">
+      {{ this.title }}
+    </a>
+  </ng-container>
 
 		<div class="d-flex flex-row">
-			<img class="lang-option" (click)="updateLang('es')" src="https://cdn1.iconfinder.com/data/icons/ensign-11/512/242_Ensign_Flag_Nation_spain-512.png">
-			<img class="lang-option mx-1" (click)="updateLang('en')" src="https://cdn1.iconfinder.com/data/icons/ensign-11/512/273_Ensign_Flag_Nation_kingdom-512.png">
+			<img class="lang-option" (click)="updateLang('es')" alt="Spanish" src="https://cdn1.iconfinder.com/data/icons/ensign-11/512/242_Ensign_Flag_Nation_spain-512.png">
+			<img class="lang-option mx-1" (click)="updateLang('en')" alt="English" src="https://cdn1.iconfinder.com/data/icons/ensign-11/512/273_Ensign_Flag_Nation_kingdom-512.png">
 
       <div class="separator mx-1"></div>
 

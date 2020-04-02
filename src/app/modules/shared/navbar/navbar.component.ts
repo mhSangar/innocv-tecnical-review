@@ -14,8 +14,14 @@ export class NavBarComponent implements OnInit {
     { label: "🇬🇧 English (UK)", value: "en" },
     { label: "ES Español", value: "es" }
   ];
+  title = "Title"
 
-  constructor(private service: TranslocoService) {}
+  constructor(private service: TranslocoService) {
+    this.service.selectTranslate('navbar.title').subscribe(value => {
+      this.title = value;
+    });
+
+  }
 
   ngOnInit() {}
 
