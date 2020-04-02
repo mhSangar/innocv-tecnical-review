@@ -1,27 +1,34 @@
 <app-navbar></app-navbar>
 
-<div class="card-options-container m-4">
-
-	<div class="card bg-dark text-light m-2 card-as-link" routerLink="/user" *transloco="let t; read: 'home.users'">
-		<div class="card-header">
-			<fa-icon [icon]="faUser" class="mr-1"></fa-icon>
-			{{ t('label') }}
-		</div>
-		<div class="card-body">
-			<h5 class="card-title">{{ t('title') }}</h5>
-			<p class="card-text">{{ t('description') }}</p>
-		</div>
+<div class="d-flex flex-column">
+	<div class="d-flex justify-content-center m-3 mt-4" *transloco="let t; read: 'home'">
+		<fa-icon [icon]="faInfoCircle" class="mr-1 info-circle"></fa-icon>
+		{{ t('info-text') }}
 	</div>
 
-	<div class="card bg-light m-2 card-as-link card-disabled" *transloco="let t; read: 'home.another'">
-		<div class="card-header text-dark-gray">
-			<fa-icon [icon]="faPlus" class="mr-1"></fa-icon>
-			{{ t('label') }}
-		</div>
-		<div class="card-body text-dark-gray">
-		<h5 class="card-title">{{ t('title') }}</h5>
-			<p class="card-text">{{ t('description') }}</p>
-		</div>
-	</div>
+	<div class="card-options-container d-flex justify-content-center flex-wrap mx-4">
 
+		<div class="card bg-dark text-light m-2 card-as-link" routerLink="/user" *transloco="let t; read: 'home.users'">
+			<div class="card-header">
+				<fa-icon [icon]="faUser" class="mr-1"></fa-icon>
+				{{ t('label') }}
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">{{ t('title') }}</h5>
+				<p class="card-text">{{ t('description') }}</p>
+			</div>
+		</div>
+
+		<div class="card bg-light m-2 card-as-link card-disabled" *transloco="let t; read: 'home.another'">
+			<div class="card-header text-dark-gray">
+				<fa-icon [icon]="faPlus" class="mr-1"></fa-icon>
+				{{ t('label') }}
+			</div>
+			<div class="card-body text-dark-gray">
+				<h5 class="card-title">{{ t('title') }}</h5>
+				<p class="card-text">{{ t('description') }}</p>
+			</div>
+		</div>
+
+	</div>
 </div>

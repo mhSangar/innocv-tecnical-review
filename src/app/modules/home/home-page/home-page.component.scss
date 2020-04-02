@@ -3,11 +3,11 @@
   color: #666;
 }
 
-.card-options-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.info-circle {
+  color: rgba(24, 125, 240, 0.8);
+}
 
+.card-options-container {
   .card-as-link {
     cursor: pointer;
     width: 16rem;

@@ -1,0 +1,17 @@
+.user-box {
+  max-width: 1000px; 
+  background-color: #f8f9fa; 
+  border-radius: 5px; 
+  width: 100%;
+
+  .user-list{
+    width: 100%;
+    
+    .user-item {
+      background-color: white;
+      width: 100%;
+      list-style: none;
+      border-radius: 5px; 
+    }
+  }
+}

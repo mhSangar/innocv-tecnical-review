@@ -11,6 +11,7 @@ import {
   TRANSLOCO_CONFIG,
   TranslocoConfig
 } from "@ngneat/transloco";
+import { TranslocoLocaleModule } from "@ngneat/transloco-locale";
 
 // own modules
 import { SharedModule } from "./modules/shared/shared.module";
@@ -23,6 +24,12 @@ import { AppComponent } from "./app.component";
     BrowserModule,
     FormsModule,
     TranslocoModule,
+    TranslocoLocaleModule.init({
+      langToLocaleMapping: {
+        en: 'en-GB',
+        es: 'es-ES'
+      }
+    }),
     AppRoutingModule,
     HttpClientModule,
     SharedModule
