@@ -1,19 +1,40 @@
-import './polyfills';
+import "./polyfills";
 
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import './test/jasmine-setup';
-import 'jasmine-core/lib/jasmine-core/jasmine-html.js';
-import 'jasmine-core/lib/jasmine-core/boot.js';
+import { enableProdMode } from "@angular/core";
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import { TestBed, async } from "@angular/core/testing";
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting
+} from "@angular/platform-browser-dynamic/testing";
+import "./test/jasmine-setup";
+import "jasmine-core/lib/jasmine-core/jasmine-html.js";
+import "jasmine-core/lib/jasmine-core/boot.js";
 
-import { AppModule } from './app/app.module';
+import "./test.ts";
 
-platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
-  // Ensure Angular destroys itself on hot reloads.
-  if (window['ngRef']) {
-    window['ngRef'].destroy();
-  }
-  window['ngRef'] = ref;
+import { AppModule } from "./app/app.module";
 
-  // Otherwise, log the boot error
-}).catch(err => console.error(err));
+platformBrowserDynamicTesting()
+  .bootstrapModule(AppModule)
+  .then(ref => {
+    // Ensure Angular destroys itself on hot reloads.
+    if (window["ngRef"]) {
+      window["ngRef"].destroy();
+    }
+    window["ngRef"] = ref;
+
+    // Otherise, log the boot error
+  })
+  .catch(err => console.error(err));
+
+// launch jasmine tests on reload
+// (function bootstrap() {
+//   if (window.jasmineRef) {
+//     location.reload();
+//     return;
+//   }
+
+//   window.onload(new Event("anything"));
+//   window.jasmineRef = jasmine.getEnv();
+// })();

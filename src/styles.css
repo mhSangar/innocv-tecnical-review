@@ -1,4 +1,8 @@
 /* Add application styles & imports to this file! */
+
+/* Jasmine CSS file */
+@import url("https://unpkg.com/jasmine-core@2.99.1/lib/jasmine-core/jasmine.css");
+
 body {
   font-weight: 300;
 }
