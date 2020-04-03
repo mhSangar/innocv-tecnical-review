@@ -19,6 +19,8 @@
   }
 
   .list-filter {
+    flex-grow: 1;
+
     fa-icon {
       font-size: .9em;
     }    
@@ -28,18 +30,18 @@
     }
   }
 
+  .action-btn {
+    flex-grow: 1;
+    flex-shrink: 0;
+    font-size: 0.9em;
+  }
+
   .user-list{
     background-color: white;
     border: 2px dashed #ccc;
     overflow-y: auto;
     max-height: 67vh;
     
-    .user-item {
-      background-color: #f8f9fa; 
-      width: 100%;
-      list-style: none;
-      border-radius: 5px; 
-    }
     .header {
       background-color: #333; 
       color: white;
@@ -49,6 +51,37 @@
       list-style: none;
       border-radius: 5px; 
 
+      .deselect-btn {
+        cursor: pointer;
+        
+        fa-icon {
+          font-size: .7em;
+        }
+      }
+    }
+
+    .user-item {
+      background-color: #f8f9fa; 
+      width: 100%;
+      list-style: none;
+      border-radius: 5px; 
+      cursor: pointer;
+      transition: all .3s;
+
+      &:hover {
+        background-color: #e7e7e7;
+      }
+    }
+
+    .user-item-selected {
+      background-color: #e7e7e7;
+    }
+
+    .no-items-label {
+      background-color: #f8f9fa; 
+      width: 100%;
+      list-style: none;
+      border-radius: 5px; 
     }
   }
 }

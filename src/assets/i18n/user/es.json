@@ -4,6 +4,9 @@
   "filter": {
     "placeholder": "Filtrar por nombre..."
   },
+  "addUserBtn": "Añadir",
+  "editUserBtn": "Editar",
+  "deleteUserBtn": "Borrar",
   "list": {
     "headers": {
       "id": "ID",

@@ -37,4 +37,6 @@
 .fixed-nav {
   position: fixed; 
   width: 100%;
+  box-shadow: 0 0 3px 2px #ddd;
+  z-index: 1;
 }

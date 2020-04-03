@@ -4,6 +4,9 @@
   "filter": {
     "placeholder": "Filter by name..."
   },
+  "addUserBtn": "Add",
+  "editUserBtn": "Edit",
+  "deleteUserBtn": "Delete",
   "list": {
     "headers": {
       "id": "ID",

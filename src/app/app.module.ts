@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule, Title } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // transloco
 import { translocoLoader } from "./transloco.loader";
@@ -15,6 +15,9 @@ import { TranslocoLocaleModule } from "@ngneat/transloco-locale";
 
 // own modules
 import { SharedModule } from "./modules/shared/shared.module";
+
+// interceptors
+import { ApiErrorInterceptor } from './api-error.interceptor';
 
 // components
 import { AppComponent } from "./app.component";
@@ -45,7 +48,13 @@ import { AppComponent } from "./app.component";
       } as TranslocoConfig
     },    
     translocoLoader,
-    Title
+    Title,
+    ,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: ApiErrorInterceptor,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })
