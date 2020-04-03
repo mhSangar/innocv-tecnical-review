@@ -77,8 +77,6 @@ export class AppComponent implements OnInit {
       this.locale = locale;
     }
     const lang = locale.substring(0, 2);
-
-    console.log({ lang: lang });
     this.translocoService.setActiveLang(lang);
   }
 }

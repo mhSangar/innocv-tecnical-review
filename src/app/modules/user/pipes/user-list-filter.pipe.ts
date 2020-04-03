@@ -14,10 +14,10 @@ export class UserListFilterPipe implements PipeTransform {
       return nameLower.includes(searchStringLower);
     });
 
-    console.log({
-      original: list,
-      filtered: filteredList
-    })
+    // console.log({
+    //   original: list,
+    //   filtered: filteredList
+    // })
 
     return filteredList;
   }
