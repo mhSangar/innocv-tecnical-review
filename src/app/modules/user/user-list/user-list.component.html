@@ -35,7 +35,7 @@
           {{ t('editUserBtn') }}
         </button>
 
-        <button class="btn btn-danger action-btn ml-1" *ngIf="someSelected">
+        <button (click)="deleteSelectedUsers()" class="btn btn-danger action-btn ml-1" *ngIf="someSelected">
           <fa-icon [icon]="faTrash" class="mr-1"></fa-icon>
           {{ t('deleteUserBtn') }}
         </button>

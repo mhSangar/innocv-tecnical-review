@@ -87,12 +87,47 @@ export class UserListComponent implements OnInit {
   }
 
   clearSelection() {
-    console.log("hmm");
-
     this.selectedUsers = {};
     this.selectedNbr = 0;
     this.someSelected = false;
     this.allSelected = false;
+  }
+
+  deleteUser(userId: number, fetchUsers: boolean = false) {
+    const promise = new Promise((resolve, reject) => {
+      this.apiService.deleteUser(userId).subscribe(res => {
+        if (fetchUsers) this.users = this.apiService.getUsers();
+
+        resolve(true);
+      });
+    });
+
+    return promise;
+  }
+ 
+  deleteSelectedUsers() {
+    let finishedDeletes = 0;
+
+    const promise = new Promise((resolve, reject) => {
+      let usersToDelete = [];
+      Object.keys(this.selectedUsers).forEach((userId: string) => {
+        const parsedUserId = parseInt(userId);
+
+        if (this.selectedUsers[userId]) {
+          usersToDelete.push(parsedUserId);
+        }
+      });
+
+      usersToDelete.forEach((userId: number) => {
+        this.deleteUser(userId).then(() => {
+          finishedDeletes += 1;
+          if (finishedDeletes === usersToDelete.length) {
+            this.users = this.apiService.getUsers();
+            this.clearSelection();
+          }
+        });
+      });
+    });
   }
 }
 
