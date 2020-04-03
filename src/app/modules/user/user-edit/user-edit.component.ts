@@ -111,7 +111,7 @@ export class UserEditComponent implements OnInit {
   onUndoChanges() {
     const formOriginalValue = {
       name: this.originalUser.name,
-      birthdate: this.originalUser.birthdate,
+      birthdate: this.dateFormatService.stringToDatepicker(t),
     }
 
     this.editedUserForm.setValue(formOriginalValue);
