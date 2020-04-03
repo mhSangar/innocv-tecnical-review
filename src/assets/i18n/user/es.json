@@ -20,6 +20,10 @@
   "userNew": {
     "title": "Usuarios",
     "subtitle": "Nuevo usuario",
-    "description": "Esta sección le permite listar todos los usuarios proporcionados por una llamada asíncrona a una API."
+    "description": "Esta sección le permite crear un nuevo usuario.",
+    "form": {
+      "name": {"label": "Nombre", "error": "El nombre es obligatorio"},
+      "birthdate": {"label": "Fecha de nacimiento", "error": "La fecha de nacimiento es obligatoria"}
+    }
   }
 }

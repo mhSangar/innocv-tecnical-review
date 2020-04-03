@@ -4,5 +4,6 @@
     "title": "Error in the application",
     "description": "It seems that an error has occured in the app.",
     "closeBtn": "Close"
-  }
+  },
+  "errorDetails": "Error details"
 }

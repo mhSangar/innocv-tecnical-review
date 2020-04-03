@@ -1,5 +1,15 @@
 import { Component, OnInit } from "@angular/core";
-import { faUser, faPlus, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import {
+  faUser,
+  faPlus,
+  faChevronRight,
+  faCalendarAlt
+} from "@fortawesome/free-solid-svg-icons";
+
+import { ApiService } from "../services/api.service";
+import { User } from "../models/user";
+
 @Component({
   selector: "app-user-new",
   templateUrl: "./user-new.component.html",
@@ -7,14 +17,35 @@ import { faUser, faPlus, faChevronRight } from "@fortawesome/free-solid-svg-icon
 })
 export class UserNewComponent implements OnInit {
   // attributes
+  newUserForm: FormGroup;
+  newUser: User;
+  now: string;
   // icons
   faUser = faUser;
   faPlus = faPlus;
   faChevronRight = faChevronRight;
+  faCalendarAlt = faCalendarAlt;
 
-  constructor() {}
+  constructor(private apiService: ApiService) {
+    this.newUser = {
+      id: null,
+      name: null,
+      birthdate: null
+    };
 
-  ngOnInit() {}
+    this.now = (new Date()).toISOString();
+  }
+
+  ngOnInit(): void {
+    this.newUserForm = new FormGroup({
+      name: new FormControl(this.newUser.name, [
+        Validators.required
+      ]),
+      birthdate: new FormControl(this.newUser.name, [
+        Validators.required
+      ])
+    });
+  }
 }
 
 /*

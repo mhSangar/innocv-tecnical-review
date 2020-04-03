@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs/Observable";
+
 import {
   faUser,
   faFilter,
@@ -17,7 +18,7 @@ import moment from "moment";
 @Component({
   selector: "app-user-list",
   templateUrl: "./user-list.component.html",
-  styleUrls: ["./user-list.component.scss"]
+  styleUrls: ["./user-list.component.scss"],
 })
 export class UserListComponent implements OnInit {
   // attributes

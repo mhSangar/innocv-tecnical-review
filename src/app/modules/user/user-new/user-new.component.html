@@ -18,4 +18,46 @@
 				{{ t('description') }}
 			</p>
 		</div>
+
+		<form [formGroup]="newUserForm" class="d-flex flex-column" *transloco="let t; read: 'user.userNew.form'">
+			<div class="d-flex flex-row">
+				<div class="col-6">
+					<label for="name">{{ t('name.label') }}</label>
+					<input id="name" name="name" class="form-control" formControlName="name" required>
+					<div *ngIf="newUserForm.get('name').invalid && (newUserForm.get('name').dirty || newUserForm.get('name').touched)"
+						class="text-danger">
+
+						<span *ngIf="newUserForm.get('name').errors.required">
+                            {{ t('name.error') }}
+                        </span>
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="form-group">
+						<label for="dateOfBirth">{{ t('birthdate.label') }}</label>
+						<div class="input-group">
+							<input id="dateOfBirth" class="form-control" formControlName="birthdate"
+                                placeholder="{{ now | translocoDate }}" name="dp" ngbDatepicker #dp="ngbDatepicker"
+                                required>
+							<div class="input-group-append">
+								<button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button">
+                                    <fa-icon [icon]="faCalendarAlt"></fa-icon>
+                                </button>
+							</div>
+						</div>
+						<div *ngIf="newUserForm.get('birthdate').invalid && (newUserForm.get('birthdate').dirty || newUserForm.get('birthdate').touched)"
+							class="text-danger">
+
+							<span *ngIf="newUserForm.get('birthdate').errors.required">
+                                    {{ t('birthdate.error') }}
+                                </span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+		</form>
 	</div>

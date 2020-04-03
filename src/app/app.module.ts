@@ -6,8 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 // ng bootstrap
 import {
-  NgbModalModule,
-  NgbDatepickerModule
+  NgbModalModule
 } from "@ng-bootstrap/ng-bootstrap";
 
 // transloco
@@ -18,6 +17,14 @@ import {
   TranslocoConfig
 } from "@ngneat/transloco";
 import { TranslocoLocaleModule } from "@ngneat/transloco-locale";
+
+// locales
+import { registerLocaleData } from '@angular/common';
+import localeEn from '@angular/common/locales/en';
+import localeEs from '@angular/common/locales/es';
+
+registerLocaleData(localeEn, 'en-GB');
+registerLocaleData(localeEs, 'es-ES');
 
 // own modules
 import { SharedModule } from "./modules/shared/shared.module";
@@ -34,7 +41,6 @@ import { ErrorModalComponent } from "./modules/shared/error-modal/error-modal.co
     BrowserModule,
     FormsModule,
     NgbModalModule,
-    NgbDatepickerModule,
     TranslocoModule,
     TranslocoLocaleModule.init({
       langToLocaleMapping: {

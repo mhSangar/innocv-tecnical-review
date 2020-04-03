@@ -20,6 +20,10 @@
   "userNew": {
     "title": "Users",
     "subtitle": "New user",
-    "description": "This section allows you to list all users provided by an async call to an API.",
+    "description": "This section allows you create a new user.",
+    "form": {
+      "name": {"label": "Name", "error": "Name is required"},
+      "birthdate": {"label": "Date of birth", "error": "Date of birth is required"}
+    }
   }
 }
