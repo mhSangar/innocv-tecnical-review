@@ -5,7 +5,8 @@ import {
   faUser,
   faSave,
   faChevronRight,
-  faCalendarAlt
+  faCalendarAlt,
+  faUndoAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { NgbModal, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
 
@@ -24,8 +25,9 @@ export class UserEditComponent implements OnInit {
   // params
   userId: number;
   // attributes
-  newUserForm: FormGroup;
-  newUser: User;
+  editedUserForm: FormGroup;
+  originalUser: User;
+  editedUser: User;
   now: Date;
   formSubmitAttempt: boolean;
   minSelectableDate: NgbDateStruct;
@@ -35,6 +37,7 @@ export class UserEditComponent implements OnInit {
   faSave = faSave;
   faChevronRight = faChevronRight;
   faCalendarAlt = faCalendarAlt;
+  faUndo = faUndoAlt;
 
   constructor(
     private apiService: ApiService,
@@ -45,7 +48,7 @@ export class UserEditComponent implements OnInit {
   ) {
     const tmpUserId = this.route.snapshot.paramMap.get("id");
     this.userId = parseInt(tmpUserId);
-    this.newUser = {
+    this.editedUser = {
       id: null,
       name: null,
       birthdate: null
@@ -58,41 +61,44 @@ export class UserEditComponent implements OnInit {
       day: this.now.getUTCDate()
     };
     this.formSubmitAttempt = false;
+    this.editedUserForm = new FormGroup({});
   }
 
   ngOnInit(): void {
     this.apiService.getUser(this.userId).subscribe((user: User) => {
-      const tmpUser: User = {
-        id: this.userId,
-        name: "John Connor",
-        birthdate: "1985-02-28T00:00:00"
-      };
-
-      this.newUser = tmpUser;
-
-      this.newUserForm = new FormGroup({
-        name: new FormControl(this.newUser.name, [Validators.required]),
-        birthdate: new FormControl(this.dateFormatService.stringToDatepicker(this.newUser.birthdate), [
-          Validators.required
-        ])
-      });
+      this.editedUser = user;
+      this.originalUser = JSON.parse(JSON.stringify(user)) ;
+      this.updateFormValues();
     });
+
+    this.updateFormValues();
+  }
+
+  updateFormValues() {
+    this.editedUserForm = new FormGroup({
+        name: new FormControl(this.editedUser.name, [Validators.required]),
+        birthdate: new FormControl(
+          this.dateFormatService.stringToDatepicker(this.editedUser.birthdate),
+          [Validators.required]
+        )
+      });
   }
 
   onSubmit() {
     this.formSubmitAttempt = true;
-    if (this.newUserForm.valid) {
-      const formResult = this.newUserForm.value;
+    if (this.editedUserForm.valid) {
+      const formResult = this.editedUserForm.value;
       const user: User = {
-        id: null,
+        id: this.userId,
         name: formResult.name,
-        birthdate: this.dateFormatService.datepickerToString(formResult.birthdate)
+        birthdate: this.dateFormatService.datepickerToString(
+          formResult.birthdate
+        )
       };
 
-      console.log({ form: this.newUserForm.value, user: user });
+      console.log({ form: this.editedUserForm.value, user: user });
 
-      this.apiService.createUser(user).subscribe(res => {
-        user.id = res.id || 3492;
+      this.apiService.updateUser(user).subscribe(res => {
         this.resetForm();
         this.openCorrectProcessModal(user);
 
@@ -100,6 +106,15 @@ export class UserEditComponent implements OnInit {
         this.router.navigate(["/user"]);
       });
     }
+  }
+
+  onUndoChanges() {
+    const formOriginalValue = {
+      name: this.originalUser.name,
+      birthdate: this.originalUser.birthdate,
+    }
+
+    this.editedUserForm.setValue(formOriginalValue);
   }
 
   openCorrectProcessModal(user: User) {
@@ -116,11 +131,11 @@ export class UserEditComponent implements OnInit {
 
     setTimeout(() => {
       modalRef.componentInstance.onClose();
-    }, 3000);
+    }, 4000);
   }
 
   resetForm() {
-    this.newUserForm.reset();
+    this.editedUserForm.reset();
     this.formSubmitAttempt = false;
   }
 }

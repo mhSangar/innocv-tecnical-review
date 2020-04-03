@@ -48,7 +48,8 @@
         "error": "Date of birth is required",
         "placeholder": "YYYY-MM-DD"
       },
-      "submitBtn": "Save changes"
+      "submitBtn": "Save changes",
+      "undoBtn": "Undo changes"
     }
   }
 }

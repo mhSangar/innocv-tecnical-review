@@ -19,7 +19,7 @@
       </p>
     </div>
 
-    <form [formGroup]="newUserForm" class="d-flex flex-column container p-0"
+    <form [formGroup]="editedUserForm" class="d-flex flex-column container p-0"
       *transloco="let t; read: 'user.userEdit.form'">
       <div class="d-flex flex-row">
         <div class="col-6">
@@ -29,10 +29,10 @@
           </div>
           <input id="name" name="name" class="form-control" formControlName="name" required>
           <div
-            *ngIf="newUserForm.get('name').invalid && (newUserForm.get('name').dirty || newUserForm.get('name').touched)"
+            *ngIf="editedUserForm.get('name').invalid && (editedUserForm.get('name').dirty || editedUserForm.get('name').touched)"
             class="text-danger">
 
-            <span *ngIf="newUserForm.get('name').errors.required">
+            <span *ngIf="editedUserForm.get('name').errors.required">
               {{ t('name.error') }}
             </span>
           </div>
@@ -54,10 +54,10 @@
               </div>
             </div>
             <div
-              *ngIf="newUserForm.get('birthdate').invalid && (newUserForm.get('birthdate').dirty || newUserForm.get('birthdate').touched)"
+              *ngIf="editedUserForm.get('birthdate').invalid && (editedUserForm.get('birthdate').dirty || editedUserForm.get('birthdate').touched)"
               class="text-danger">
 
-              <span *ngIf="newUserForm.get('birthdate').errors.required">{{ t('birthdate.error') }}</span>
+              <span *ngIf="editedUserForm.get('birthdate').errors.required">{{ t('birthdate.error') }}</span>
             </div>
           </div>
         </div>
@@ -65,9 +65,14 @@
 
       <div class="container d-flex justify-content-center mt-4">
         <button type="submit" (click)="onSubmit()" class="btn btn-success form-submit-btn"
-          [disabled]="!newUserForm.valid">
+          [disabled]="!editedUserForm.valid">
           <fa-icon [icon]="faSave" class="mr-1"></fa-icon>
           {{ t('submitBtn') }}
+        </button>
+
+        <button (click)="onUndoChanges()" class="btn btn-info ml-2 form-submit-btn">
+          <fa-icon [icon]="faUndo" class="mr-1"></fa-icon>
+          {{ t('undoBtn') }}
         </button>
       </div>
 
