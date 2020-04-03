@@ -49,7 +49,7 @@ export class UserListComponent implements OnInit {
   }
 
   /**
-   * Toggles whether an user-ite is selec
+   * Toggles whether an user-item is selected
    */
   toggleIsSelected(clickedUser) {
     const isSelected = this.selectedUsers[clickedUser.id];
@@ -71,6 +71,9 @@ export class UserListComponent implements OnInit {
     });
   }
 
+  /**
+   * Toggles the value of all user-items
+   */
   toggleAllUsers() {
     this.users.subscribe(users => {
       users.forEach(user => {
@@ -81,6 +84,9 @@ export class UserListComponent implements OnInit {
     });
   }
 
+  /**
+   * Clear the selection for all user-items
+   */
   clearSelection() {
     this.selectedUsers = {};
     this.selectedNbr = 0;
@@ -88,14 +94,23 @@ export class UserListComponent implements OnInit {
     this.allSelected = false;
   }
 
+  /**
+   * Navigates to a new section to edit the user.
+   */
   editSelectedUser() {
+    // search for the only selected element
     const userId = Object.keys(this.selectedUsers).find((userId: string) => {
       return this.selectedUsers[userId];
     });
 
+    // navigate using its ID
     this.router.navigate(["/user/", userId]);
   }
 
+  /**
+   * Deletes the user with userId and optionally fetchs again the 
+   * user list.
+   */
   deleteUser(userId: number, fetchUsers: boolean = false) {
     const promise = new Promise((resolve, reject) => {
       this.apiService.deleteUser(userId).subscribe(res => {
@@ -108,27 +123,35 @@ export class UserListComponent implements OnInit {
     return promise;
   }
 
+  /**
+   * Deletes all users that are selected and fetchs the user list 
+   * at the end to get the current user items.
+   */
   deleteSelectedUsers() {
+    // number of launched delete processes that have finished
     let finishedDeletes = 0;
 
-    const promise = new Promise((resolve, reject) => {
-      let usersToDelete = [];
-      Object.keys(this.selectedUsers).forEach((userId: string) => {
-        const parsedUserId = parseInt(userId);
+    // extract the selected users    
+    let usersToDelete = [];
+    Object.keys(this.selectedUsers).forEach((userId: string) => {
+      const parsedUserId = parseInt(userId);
 
-        if (this.selectedUsers[userId]) {
-          usersToDelete.push(parsedUserId);
+      if (this.selectedUsers[userId]) {
+        usersToDelete.push(parsedUserId);
+      }
+    });
+
+    // delete the selected users
+    usersToDelete.forEach((userId: number) => {
+      this.deleteUser(userId).then(() => {
+        // update completed delete processes
+        finishedDeletes += 1;
+
+        // if it was the last one, fetch user list
+        if (finishedDeletes === usersToDelete.length) {
+          this.users = this.apiService.getUsers();
+          this.clearSelection();
         }
-      });
-
-      usersToDelete.forEach((userId: number) => {
-        this.deleteUser(userId).then(() => {
-          finishedDeletes += 1;
-          if (finishedDeletes === usersToDelete.length) {
-            this.users = this.apiService.getUsers();
-            this.clearSelection();
-          }
-        });
       });
     });
   }
