@@ -42,7 +42,7 @@
               <span class="text-danger ml-1 font-weight-bold">*</span>
             </div>
 						<div class="input-group">
-							<input id="dateOfBirth" class="form-control" formControlName="birthdate" placeholder="{{ t('birthdate.placeholder') }}" name="dp" ngbDatepicker #dp="ngbDatepicker" required>
+							<input id="dateOfBirth" class="form-control" formControlName="birthdate" placeholder="{{ t('birthdate.placeholder') }}" name="dp" ngbDatepicker #dp="ngbDatepicker" [minDate]="minSelectableDate" [maxDate]="maxSelectableDate" required>
 							<div class="input-group-append">
 								<button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button">
                                     <fa-icon [icon]="faCalendarAlt"></fa-icon>

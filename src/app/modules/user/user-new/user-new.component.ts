@@ -7,9 +7,10 @@ import {
   faChevronRight,
   faCalendarAlt
 } from "@fortawesome/free-solid-svg-icons";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
 
 import { ApiService } from "../services/api.service";
+import { DatepickerFormatService } from "../services/datepicker-format.service";
 import { User } from "../models/user";
 
 import { CorrectProcessModalComponent } from "../../shared/modals/correct-process-modal/correct-process-modal.component";
@@ -23,8 +24,10 @@ export class UserNewComponent implements OnInit {
   // attributes
   newUserForm: FormGroup;
   newUser: User;
-  now: string;
+  now: Date;
   formSubmitAttempt: boolean;
+  minSelectableDate: NgbDateStruct;
+  maxSelectableDate: NgbDateStruct;
   // icons
   faUser = faUser;
   faPlus = faPlus;
@@ -34,7 +37,8 @@ export class UserNewComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     public router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private dateFormatService: DatepickerFormatService
   ) {
     this.newUser = {
       id: null,
@@ -42,8 +46,14 @@ export class UserNewComponent implements OnInit {
       birthdate: null
     };
 
-    this.now = new Date().toISOString();
     this.formSubmitAttempt = false;
+    this.now = new Date();
+    this.minSelectableDate = { year: 1900, month: 1, day: 1 };
+    this.maxSelectableDate = {
+      year: this.now.getFullYear(),
+      month: this.now.getMonth() + 1,
+      day: this.now.getUTCDate()
+    };
   }
 
   ngOnInit(): void {
@@ -53,15 +63,6 @@ export class UserNewComponent implements OnInit {
     });
   }
 
-  formatDate(year: string, month: string, day: string) {
-    const tmpDate = new Date(
-      parseInt(year),
-      parseInt(month) - 1,
-      parseInt(day)
-    );
-    return tmpDate.toISOString();
-  }
-
   onSubmit() {
     this.formSubmitAttempt = true;
     if (this.newUserForm.valid) {
@@ -69,11 +70,7 @@ export class UserNewComponent implements OnInit {
       const user: User = {
         id: null,
         name: formResult.name,
-        birthdate: this.formatDate(
-          formResult.birthdate.year,
-          formResult.birthdate.month,
-          formResult.birthdate.day
-        )
+        birthdate: this.dateFormatService.datepickerToString(formResult.birthdate)
       };
 
       console.log({ form: this.newUserForm.value, user: user });

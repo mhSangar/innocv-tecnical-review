@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import {
   faUser,
@@ -7,9 +7,10 @@ import {
   faChevronRight,
   faCalendarAlt
 } from "@fortawesome/free-solid-svg-icons";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
 
 import { ApiService } from "../services/api.service";
+import { DatepickerFormatService } from "../services/datepicker-format.service";
 import { User } from "../models/user";
 
 import { CorrectProcessModalComponent } from "../../shared/modals/correct-process-modal/correct-process-modal.component";
@@ -20,11 +21,15 @@ import { CorrectProcessModalComponent } from "../../shared/modals/correct-proces
   styleUrls: ["./user-edit.component.scss"]
 })
 export class UserEditComponent implements OnInit {
+  // params
+  userId: number;
   // attributes
   newUserForm: FormGroup;
   newUser: User;
-  now: string;
+  now: Date;
   formSubmitAttempt: boolean;
+  minSelectableDate: NgbDateStruct;
+  maxSelectableDate: NgbDateStruct;
   // icons
   faUser = faUser;
   faSave = faSave;
@@ -34,32 +39,44 @@ export class UserEditComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     public router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private route: ActivatedRoute,
+    private dateFormatService: DatepickerFormatService
   ) {
+    const tmpUserId = this.route.snapshot.paramMap.get("id");
+    this.userId = parseInt(tmpUserId);
     this.newUser = {
       id: null,
       name: null,
       birthdate: null
     };
-
-    this.now = new Date().toISOString();
+    this.now = new Date();
+    this.minSelectableDate = { year: 1900, month: 1, day: 1 };
+    this.maxSelectableDate = {
+      year: this.now.getFullYear(),
+      month: this.now.getMonth() + 1,
+      day: this.now.getUTCDate()
+    };
     this.formSubmitAttempt = false;
   }
 
   ngOnInit(): void {
-    this.newUserForm = new FormGroup({
-      name: new FormControl(this.newUser.name, [Validators.required]),
-      birthdate: new FormControl(this.newUser.birthdate, [Validators.required])
-    });
-  }
+    this.apiService.getUser(this.userId).subscribe((user: User) => {
+      const tmpUser: User = {
+        id: this.userId,
+        name: "John Connor",
+        birthdate: "1985-02-28T00:00:00"
+      };
 
-  formatDate(year: string, month: string, day: string) {
-    const tmpDate = new Date(
-      parseInt(year),
-      parseInt(month) - 1,
-      parseInt(day)
-    );
-    return tmpDate.toISOString();
+      this.newUser = tmpUser;
+
+      this.newUserForm = new FormGroup({
+        name: new FormControl(this.newUser.name, [Validators.required]),
+        birthdate: new FormControl(this.dateFormatService.stringToDatepicker(this.newUser.birthdate), [
+          Validators.required
+        ])
+      });
+    });
   }
 
   onSubmit() {
@@ -69,11 +86,7 @@ export class UserEditComponent implements OnInit {
       const user: User = {
         id: null,
         name: formResult.name,
-        birthdate: this.formatDate(
-          formResult.birthdate.year,
-          formResult.birthdate.month,
-          formResult.birthdate.day
-        )
+        birthdate: this.dateFormatService.datepickerToString(formResult.birthdate)
       };
 
       console.log({ form: this.newUserForm.value, user: user });

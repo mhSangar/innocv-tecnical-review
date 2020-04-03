@@ -1,10 +1,10 @@
 <app-navbar></app-navbar>
 
-<div class="d-flex flex-column">
-	<div class="d-flex justify-content-center m-3 mt-4" *transloco="let t; read: 'home'">
-		<fa-icon [icon]="faInfoCircle" class="mr-1 info-circle"></fa-icon>
+<div class="d-flex flex-column align-items-center">
+  <div class="alert alert-primary info-alert mt-5 d-flex justify-content-center" role="alert" *transloco="let t; read: 'home'">
+    <fa-icon [icon]="faInfoCircle" class="mr-1 info-circle"></fa-icon>
 		{{ t('info-text') }}
-	</div>
+  </div>
 
 	<div class="card-options-container d-flex justify-content-center flex-wrap mx-4">
 
