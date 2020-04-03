@@ -11,7 +11,7 @@ import { Observable, throwError } from "rxjs";
 import { retry, catchError } from "rxjs/operators";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
-import { ErrorModalComponent } from './modules/shared/error-modal/error-modal.component';
+import { ErrorModalComponent } from "./modules/shared/error-modal/error-modal.component";
 
 @Injectable()
 export class ApiErrorInterceptor implements HttpInterceptor {
@@ -39,20 +39,22 @@ export class ApiErrorInterceptor implements HttpInterceptor {
           errorStatus = `${error.status} - `;
         }
 
-        // launch modal
-        const modalRef = this.modalService.open(ErrorModalComponent, {
-          ariaLabelledBy: "modal-basic-title",
-          centered: true,
-          size: "md",
-          windowClass: "newUserModalClass"
-        });
-        modalRef.componentInstance.message = errorMessage;
-        modalRef.componentInstance.status = errorStatus;
+        // launch modal if not 200
+        if (error.status !== 200) {
+          const modalRef = this.modalService.open(ErrorModalComponent, {
+            ariaLabelledBy: "modal-basic-title",
+            centered: true,
+            size: "md",
+            windowClass: "newUserModalClass"
+          });
+          modalRef.componentInstance.message = errorMessage;
+          modalRef.componentInstance.status = errorStatus;
 
-        console.log({
-          errorMessage: errorMessage,
-          errorStatus: errorStatus,
-        })
+          console.log({
+            errorMessage: errorMessage,
+            errorStatus: errorStatus
+          });
+        }
 
         return throwError(errorMessage);
       })

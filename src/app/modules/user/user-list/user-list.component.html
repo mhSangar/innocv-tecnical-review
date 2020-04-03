@@ -1,7 +1,6 @@
 <app-navbar></app-navbar>
 
-
-<div class="d-flex justify-content-center" *transloco="let t; read: 'user'">
+<div class="d-flex justify-content-center" *transloco="let t; read: 'user.userList'">
 	<div class="user-box d-flex justify-content-center align-items-center flex-column mx-3 my-4 p-4">
 		<h5 class="section-title mb-0">
 			<fa-icon [icon]="faUser"></fa-icon>
@@ -25,27 +24,27 @@
 					<input type="text" class="form-control search-input" placeholder="{{ t('filter.placeholder') }}"  name="searchString" [(ngModel)]="searchString" (ngModelChange)="clearSelection()">
         </div>
 
-					<button class="btn btn-success action-btn ml-1">
-          <fa-icon [icon]="faPlus" class="mr-1"></fa-icon>
-          {{ t('addUserBtn') }}
+					<button routerLink="new" class="btn btn-success action-btn ml-1">
+          <fa-icon [icon]="faPlus"></fa-icon>
+          <!-- {{ t('addUserBtn') }} -->
         </button>
 
 					<button class="btn btn-warning action-btn ml-1" *ngIf="selectedNbr === 1">
-          <fa-icon [icon]="faEdit" class="mr-1"></fa-icon>
-          {{ t('editUserBtn') }}
+          <fa-icon [icon]="faEdit"></fa-icon>
+          <!-- {{ t('editUserBtn') }} -->
         </button>
 
 					<button (click)="deleteSelectedUsers()" class="btn btn-danger action-btn ml-1" *ngIf="someSelected">
-          <fa-icon [icon]="faTrash" class="mr-1"></fa-icon>
-          {{ t('deleteUserBtn') }}
+          <fa-icon [icon]="faTrash"></fa-icon>
+          <!-- {{ t('deleteUserBtn') }} -->
         </button>
 				</div>
 
-				<ul class="user-list p-2 m-0 container" *transloco="let t; read: 'user.list'">
+				<ul class="user-list p-2 m-0 container" *transloco="let t; read: 'user.userList.list'">
 					<ng-container *ngIf="users | async | userListFilter:searchString as filteredUsers">
 						<!-- Header (if items) -->
 						<li class="header py-1 px-4 mt-2 mb-3" *ngIf="filteredUsers?.length">
-							<div class="d-flex flex-row row">
+							<div class="d-flex flex-row flex-nowrap align-items-center row">
 								<div class="col-1 d-flex justify-content-center align-items-center">
 									<input type="checkbox" (click)="toggleAllUsers()" [(ngModel)]="allSelected" [hidden]="someSelected && !allSelected" />
 									<div class="deselect-btn p-0" (click)="deselectAllUsers()"
@@ -54,8 +53,8 @@
 									</div>
 								</div>
 								<div class="col-2">{{ t('headers.id') }}</div>
-								<div class="col-6">{{ t('headers.name') }}</div>
-								<div class="col-3">{{ t('headers.birthdate') }}</div>
+								<div class="col-5">{{ t('headers.name') }}</div>
+								<div class="col-4">{{ t('headers.birthdate') }}</div>
 							</div>
 						</li>
 
@@ -69,14 +68,14 @@
 						<!-- Items -->
 						<li class="user-item py-1 px-4 my-2" *ngFor="let user of filteredUsers"
 							[ngClass]="{'user-item-selected': selectedUsers[user.id]}" (click)="toggleIsSelected(user)">
-							<div class="d-flex flex-row row">
+							<div class="d-flex flex-row flex-nowrap align-items-center row">
 								<div class="col-1  d-flex justify-content-center align-items-center">
 									<input type="checkbox" [(ngModel)]="selectedUsers[user.id]" />
+                </div>
+                <div class="col-2">{{ user.id }}</div>
+                <div class="col-5">{{ user.name }}</div>
+                <div class="col-4">{{ user.birthdate | translocoDate }}</div>
               </div>
-									<div class="col-2">{{ user.id }}</div>
-									<div class="col-6">{{ user.name }}</div>
-									<div class="col-3">{{ user.birthdate | translocoDate }}</div>
-								</div>
 						</li>
 					</ng-container>
 				</ul>

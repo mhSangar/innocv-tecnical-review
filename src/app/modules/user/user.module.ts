@@ -10,6 +10,7 @@ import { SharedModule } from "../shared/shared.module";
 import { UserListFilterPipe } from "./pipes/user-list-filter.pipe";
 import { UsersRoutingModule } from "./user-routing.module";
 import { UserListComponent } from "./user-list/user-list.component";
+import { UserNewComponent } from "./user-new/user-new.component";
 
 @NgModule({
   imports: [
@@ -27,7 +28,7 @@ import { UserListComponent } from "./user-list/user-list.component";
     }),
     SharedModule
   ],
-  declarations: [UserListComponent, UserListFilterPipe],
+  declarations: [UserListComponent, UserListFilterPipe, UserNewComponent],
   providers: [{ provide: TRANSLOCO_SCOPE, useValue: "user" }],
   bootstrap: [UserListComponent]
 })

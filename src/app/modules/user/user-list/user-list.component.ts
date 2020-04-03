@@ -77,13 +77,7 @@ export class UserListComponent implements OnInit {
   }
 
   deselectAllUsers() {
-    this.users.subscribe(users => {
-      users.forEach(user => {
-        this.selectedUsers[user.id] = false;
-      });
-
-      this.someSelected = false;
-    });
+    this.clearSelection();
   }
 
   clearSelection() {

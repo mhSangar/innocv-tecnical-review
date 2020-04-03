@@ -1,18 +1,25 @@
 {
-  "title": "Users",
-  "description": "This section allows you to list all users provided by an async call to an API.",
-  "filter": {
-    "placeholder": "Filter by name..."
-  },
-  "addUserBtn": "Add",
-  "editUserBtn": "Edit",
-  "deleteUserBtn": "Delete",
-  "list": {
-    "headers": {
-      "id": "ID",
-      "name": "Name",
-      "birthdate": "Date of birth"
+  "userList": {
+    "title": "Users",
+    "description": "This section allows you to list all users provided by an async call to an API.",
+    "filter": {
+      "placeholder": "Filter by name..."
     },
-    "noItemsLabel": "No users found"
+    "addUserBtn": "Add",
+    "editUserBtn": "Edit",
+    "deleteUserBtn": "Delete",
+    "list": {
+      "headers": {
+        "id": "ID",
+        "name": "Name",
+        "birthdate": "Date of birth"
+      },
+      "noItemsLabel": "No users found"
+    }
+  },
+  "userNew": {
+    "title": "Users",
+    "subtitle": "New user",
+    "description": "This section allows you to list all users provided by an async call to an API.",
   }
 }
