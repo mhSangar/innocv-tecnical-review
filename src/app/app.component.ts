@@ -1,11 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { TranslocoService } from "@ngneat/transloco";
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  styleUrls: ["./app.component.css"],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class AppComponent implements OnInit {
   // the locales the app supports
@@ -20,8 +22,13 @@ export class AppComponent implements OnInit {
 
   constructor(
     private translocoService: TranslocoService,
-    private titleService: Title
-  ) {}
+    private titleService: Title,
+    config: NgbModalConfig, private modalService: NgbModal
+  ) {
+    // customize default values of modals used by this component tree
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit() {
     this.detectLocale();

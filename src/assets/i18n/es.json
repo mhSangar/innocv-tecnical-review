@@ -1,3 +1,8 @@
 {
-  "title": "Español"
+  "title": "Español",
+  "errorModal": {
+    "title": "Error en la aplicación",
+    "description": "Parece que ha ocurrido un error en la app.",
+    "closeBtn": "Cerrar"
+  }
 }

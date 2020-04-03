@@ -8,7 +8,7 @@ import { User } from "../models/user";
 })
 export class ApiService { 
   // apiURL: string = "https://my-json-server.typicode.com/mhSangar/fake-innocv-api";
-  apiURL: string = "http://hello-world.innocv.com/api";
+  // apiURL: string = "http://hello-world.innocv.com/api";
 
   constructor(private http: HttpClient) {}
 
