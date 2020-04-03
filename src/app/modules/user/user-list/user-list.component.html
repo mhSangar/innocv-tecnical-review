@@ -24,17 +24,17 @@
 					<input type="text" class="form-control search-input" placeholder="{{ t('filter.placeholder') }}"  name="searchString" [(ngModel)]="searchString" (ngModelChange)="clearSelection()">
         </div>
 
-					<button routerLink="new" class="btn btn-success action-btn ml-1">
+        <button routerLink="new" class="btn btn-success action-btn ml-1">
           <fa-icon [icon]="faPlus"></fa-icon>
           <!-- {{ t('addUserBtn') }} -->
         </button>
 
-					<button class="btn btn-warning action-btn ml-1" *ngIf="selectedNbr === 1">
+        <button (click)="editSelectedUser()" class="btn btn-warning action-btn ml-1" *ngIf="selectedNbr === 1">
           <fa-icon [icon]="faEdit"></fa-icon>
           <!-- {{ t('editUserBtn') }} -->
         </button>
 
-					<button (click)="deleteSelectedUsers()" class="btn btn-danger action-btn ml-1" *ngIf="someSelected">
+        <button (click)="deleteSelectedUsers()" class="btn btn-danger action-btn ml-1" *ngIf="someSelected">
           <fa-icon [icon]="faTrash"></fa-icon>
           <!-- {{ t('deleteUserBtn') }} -->
         </button>
@@ -47,7 +47,7 @@
 							<div class="d-flex flex-row flex-nowrap align-items-center row">
 								<div class="col-1 d-flex justify-content-center align-items-center">
 									<input type="checkbox" (click)="toggleAllUsers()" [(ngModel)]="allSelected" [hidden]="someSelected && !allSelected" />
-									<div class="deselect-btn p-0" (click)="deselectAllUsers()"
+									<div class="deselect-btn p-0" (click)="clearSelection()"
 										[hidden]="!someSelected || allSelected">
 										<fa-icon [icon]="faMinus"></fa-icon>
 									</div>

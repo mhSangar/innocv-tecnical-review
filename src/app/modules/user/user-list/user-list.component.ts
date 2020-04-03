@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs/Observable";
-
+import { Router } from "@angular/router";
 import {
   faUser,
   faFilter,
@@ -18,7 +18,7 @@ import moment from "moment";
 @Component({
   selector: "app-user-list",
   templateUrl: "./user-list.component.html",
-  styleUrls: ["./user-list.component.scss"],
+  styleUrls: ["./user-list.component.scss"]
 })
 export class UserListComponent implements OnInit {
   // attributes
@@ -36,7 +36,7 @@ export class UserListComponent implements OnInit {
   faEdit = faEdit;
   faTrash = faTrash;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, public router: Router) {
     this.searchString = "";
     this.selectedUsers = {};
     this.someSelected = false;
@@ -77,15 +77,19 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  deselectAllUsers() {
-    this.clearSelection();
-  }
-
   clearSelection() {
     this.selectedUsers = {};
     this.selectedNbr = 0;
     this.someSelected = false;
     this.allSelected = false;
+  }
+
+  editSelectedUser() {
+    const userId = Object.keys(this.selectedUsers).find((userId: string) => {
+      return this.selectedUsers[userId];
+    });
+
+    this.router.navigate(["/user/", userId]);
   }
 
   deleteUser(userId: number, fetchUsers: boolean = false) {
@@ -99,7 +103,7 @@ export class UserListComponent implements OnInit {
 
     return promise;
   }
- 
+
   deleteSelectedUsers() {
     let finishedDeletes = 0;
 

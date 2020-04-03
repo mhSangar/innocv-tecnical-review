@@ -33,5 +33,22 @@
       },
       "submitBtn": "Crear"
     }
+  },
+  "userEdit": {
+    "title": "Usuarios",
+    "subtitle": "Editar usuario",
+    "description": "Esta sección le permite editar un usuario ya existente.",
+    "form": {
+      "name": {
+        "label": "Nombre",
+        "error": "El nombre es obligatorio"
+      },
+      "birthdate": {
+        "label": "Fecha de nacimiento",
+        "error": "La fecha de nacimiento es obligatoria",
+        "placeholder": "AAAA-MM-DD"
+      },
+      "submitBtn": "Guardar cambios"
+    }
   }
 }

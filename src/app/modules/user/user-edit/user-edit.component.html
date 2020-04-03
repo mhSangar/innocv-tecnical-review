@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div class="d-flex justify-content-center" *transloco="let t; read: 'user.userNew'">
+<div class="d-flex justify-content-center" *transloco="let t; read: 'user.userEdit'">
 	<div class="user-box d-flex justify-content-center align-items-center flex-column mx-3 my-4 p-4">
 		<h5 class="section-title mb-0">
 			<a routerLink="/user" class="title-link">
@@ -19,7 +19,7 @@
 			</p>
 		</div>
 
-		<form [formGroup]="newUserForm" class="d-flex flex-column container p-0" *transloco="let t; read: 'user.userNew.form'">
+		<form [formGroup]="newUserForm" class="d-flex flex-column container p-0" *transloco="let t; read: 'user.userEdit.form'">
 			<div class="d-flex flex-row">
 				<div class="col-6">
           <div class="d-flex flex-row justify-content-start">
@@ -60,7 +60,7 @@
 
 			<div class="container d-flex justify-content-center mt-4">
 				<button type="submit" (click)="onSubmit()" class="btn btn-success form-submit-btn" [disabled]="!newUserForm.valid">
-          <fa-icon [icon]="faPlus" class="mr-1"></fa-icon>
+          <fa-icon [icon]="faSave" class="mr-1"></fa-icon>
           {{ t('submitBtn') }}
         </button>
 			</div>

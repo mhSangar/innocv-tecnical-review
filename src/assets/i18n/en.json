@@ -2,8 +2,20 @@
   "title": "English",
   "errorModal": {
     "title": "Error in the application",
+    "errorDetails": "Error details",
     "description": "It seems that an error has occured in the app.",
     "closeBtn": "Close"
   },
-  "errorDetails": "Error details"
+  "correctProcessModal": {
+    "userAdded": {
+      "title": "User correctly added",
+      "description": "The user {{ name }} has been created on the endpoint with the ID {{ id }}.",
+      "closeBtn": "Close"
+    },
+    "userEdited": {
+      "title": "User correctly updated",
+      "description": "User with ID {{ id }} has been modified on the endpoint with name {{ name }} and date of birth {{ date | translocoDate }}.",
+      "closeBtn": "Close"
+    }
+  }
 }

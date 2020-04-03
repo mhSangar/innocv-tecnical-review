@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import {
   faUser,
-  faPlus,
+  faSave,
   faChevronRight,
   faCalendarAlt
 } from "@fortawesome/free-solid-svg-icons";
@@ -15,11 +15,11 @@ import { User } from "../models/user";
 import { CorrectProcessModalComponent } from "../../shared/modals/correct-process-modal/correct-process-modal.component";
 
 @Component({
-  selector: "app-user-new",
-  templateUrl: "./user-new.component.html",
-  styleUrls: ["./user-new.component.scss"]
+  selector: "app-user-edit",
+  templateUrl: "./user-edit.component.html",
+  styleUrls: ["./user-edit.component.scss"]
 })
-export class UserNewComponent implements OnInit {
+export class UserEditComponent implements OnInit {
   // attributes
   newUserForm: FormGroup;
   newUser: User;
@@ -27,7 +27,7 @@ export class UserNewComponent implements OnInit {
   formSubmitAttempt: boolean;
   // icons
   faUser = faUser;
-  faPlus = faPlus;
+  faSave = faSave;
   faChevronRight = faChevronRight;
   faCalendarAlt = faCalendarAlt;
 
@@ -96,9 +96,10 @@ export class UserNewComponent implements OnInit {
       size: "md",
       windowClass: "modal-holder"
     });
-    modalRef.componentInstance.process = "userAdded";
+    modalRef.componentInstance.process = "userEdited";
     modalRef.componentInstance.name = user.name;
     modalRef.componentInstance.id = user.id;
+    modalRef.componentInstance.date = user.birthdate;
 
     setTimeout(() => {
       modalRef.componentInstance.onClose();

@@ -2,30 +2,32 @@ import { Component, OnInit } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: "app-error-modal",
+  selector: "app-correct-process-modal",
   template: `
-    <div *transloco="let t; read 'errorModal'">
+    <div *transloco="let t; read 'correctProcessModal.' + process ">
       <div class="modal-header">
-      <h4 class="modal-title">{{ status }}{{ t('title') }} 😥</h4>
+      <h4 class="modal-title">{{ t('title') }} 🤗</h4>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <p>{{ t('description') }}</p>
-      <div class="form-group">
-        <label class="error-details" for="errorMessage">{{ t('errorDetails') }}: </label>
-        <textarea class="form-control" id="errorMessage" rows="3" disabled>{{ message }}</textarea>
-      </div>
+      <p>{{ t('description', { id: id, name: name, date: date }) }}</p>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" ngbAutofocus (click)="activeModal.close('Close click')">{{ t('closeBtn') }}</button>
     </div>
-    </div>    
+    </div>
+    
   `,
-  styleUrls: ["./error-modal.component.scss"]
+  styleUrls: ["./correct-process-modal.component.scss"]
 })
-export class ErrorModalComponent implements OnInit {
+export class CorrectProcessModalComponent implements OnInit {
+  id: number;
+  name: string;
+  date: string;
+  process: string;
+
   constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit() {}

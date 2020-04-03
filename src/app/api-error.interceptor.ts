@@ -17,10 +17,6 @@ import { ErrorModalComponent } from "./modules/shared/modals/error-modal/error-m
 export class ApiErrorInterceptor implements HttpInterceptor {
   constructor(private injector: Injector, private modalService: NgbModal) {}
 
-  openModal(content) {
-    this.modalService.open(content);
-  }
-
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler

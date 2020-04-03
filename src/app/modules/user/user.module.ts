@@ -5,7 +5,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TRANSLOCO_SCOPE, TranslocoModule } from "@ngneat/transloco";
 import { TranslocoLocaleModule } from "@ngneat/transloco-locale";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { NgbDatepickerModule, NgbDateParserFormatter } from "@ng-bootstrap/ng-bootstrap";
+import {
+  NgbDatepickerModule,
+  NgbDateParserFormatter
+} from "@ng-bootstrap/ng-bootstrap";
 
 import { SharedModule } from "../shared/shared.module";
 import { UsersRoutingModule } from "./user-routing.module";
@@ -13,6 +16,7 @@ import { UserListFilterPipe } from "./pipes/user-list-filter.pipe";
 
 import { UserListComponent } from "./user-list/user-list.component";
 import { UserNewComponent } from "./user-new/user-new.component";
+import { UserEditComponent } from "./user-edit/user-edit.component";
 
 @NgModule({
   imports: [
@@ -27,10 +31,13 @@ import { UserNewComponent } from "./user-new/user-new.component";
     NgbDatepickerModule,
     SharedModule
   ],
-  declarations: [UserListComponent, UserListFilterPipe, UserNewComponent],
-  providers: [
-    { provide: TRANSLOCO_SCOPE, useValue: "user" }
+  declarations: [
+    UserListComponent,
+    UserListFilterPipe,
+    UserNewComponent,
+    UserEditComponent
   ],
+  providers: [{ provide: TRANSLOCO_SCOPE, useValue: "user" }],
   bootstrap: [UserListComponent]
 })
 export class UserModule {}

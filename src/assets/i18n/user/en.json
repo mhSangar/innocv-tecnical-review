@@ -20,7 +20,7 @@
   "userNew": {
     "title": "Users",
     "subtitle": "New user",
-    "description": "This section allows you create a new user.",
+    "description": "This section allows you to create a new user.",
     "form": {
       "name": {
         "label": "Name",
@@ -32,6 +32,23 @@
         "placeholder": "YYYY-MM-DD"
       },
       "submitBtn": "Create"
+    }
+  },
+  "userEdit": {
+    "title": "Users",
+    "subtitle": "Edit user",
+    "description": "This section allows you to edit an existing user.",
+    "form": {
+      "name": {
+        "label": "Name",
+        "error": "Name is required"
+      },
+      "birthdate": {
+        "label": "Date of birth",
+        "error": "Date of birth is required",
+        "placeholder": "YYYY-MM-DD"
+      },
+      "submitBtn": "Save changes"
     }
   }
 }

@@ -5,9 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 // ng bootstrap
-import {
-  NgbModalModule
-} from "@ng-bootstrap/ng-bootstrap";
+import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
 
 // transloco
 import { translocoLoader } from "./transloco.loader";
@@ -19,12 +17,12 @@ import {
 import { TranslocoLocaleModule } from "@ngneat/transloco-locale";
 
 // locales
-import { registerLocaleData } from '@angular/common';
-import localeEn from '@angular/common/locales/en';
-import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from "@angular/common";
+import localeEn from "@angular/common/locales/en";
+import localeEs from "@angular/common/locales/es";
 
-registerLocaleData(localeEn, 'en-GB');
-registerLocaleData(localeEs, 'es-ES');
+registerLocaleData(localeEn, "en-GB");
+registerLocaleData(localeEs, "es-ES");
 
 // own modules
 import { SharedModule } from "./modules/shared/shared.module";
@@ -34,7 +32,8 @@ import { ApiErrorInterceptor } from "./api-error.interceptor";
 
 // components
 import { AppComponent } from "./app.component";
-import { ErrorModalComponent } from "./modules/shared/error-modal/error-modal.component";
+import { ErrorModalComponent } from "./modules/shared/modals/error-modal/error-modal.component";
+import { CorrectProcessModalComponent } from "./modules/shared/modals/correct-process-modal/correct-process-modal.component";
 
 @NgModule({
   imports: [
@@ -52,7 +51,7 @@ import { ErrorModalComponent } from "./modules/shared/error-modal/error-modal.co
     HttpClientModule,
     SharedModule
   ],
-  declarations: [AppComponent, ErrorModalComponent],
+  declarations: [AppComponent, ErrorModalComponent, CorrectProcessModalComponent],
   providers: [
     {
       provide: TRANSLOCO_CONFIG,
@@ -72,6 +71,6 @@ import { ErrorModalComponent } from "./modules/shared/error-modal/error-modal.co
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ErrorModalComponent]
+  entryComponents: [ErrorModalComponent, CorrectProcessModalComponent]
 })
 export class AppModule {}

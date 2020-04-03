@@ -2,8 +2,20 @@
   "title": "Español",
   "errorModal": {
     "title": "Error en la aplicación",
+    "errorDetails": "Detalles del error",
     "description": "Parece que ha ocurrido un error en la app.",
     "closeBtn": "Cerrar"
   },
-  "errorDetails": "Detalles del error"
+  "correctProcessModal": {
+    "userAdded": {
+      "title": "Usuario añadido correctamente",
+      "description": "El usuario {{ name }} se ha creado en el endpoint con el ID {{ id }}.",
+      "closeBtn": "Cerrar"
+    },
+    "userEdited": {
+      "title": "Usuario editado correctamente",
+      "description": "El usuario con ID {{ id }} se ha modificado en el endpoint con nombre {{ name }} y fecha de nacimiento {{ date | translocoDate }}.",
+      "closeBtn": "Cerrar"
+    }
+  }
 }
