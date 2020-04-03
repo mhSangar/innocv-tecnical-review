@@ -9,10 +9,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { NgbModal, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
 
+// services
 import { ApiService } from "../services/api.service";
 import { DatepickerFormatService } from "../services/datepicker-format.service";
+
+// models
 import { User } from "../models/user";
 
+// modal component
 import { CorrectProcessModalComponent } from "../../shared/modals/correct-process-modal/correct-process-modal.component";
 
 @Component({
@@ -40,15 +44,15 @@ export class UserNewComponent implements OnInit {
     private modalService: NgbModal,
     private dateFormatService: DatepickerFormatService
   ) {
-    this.newUser = {
-      id: null,
-      name: null,
-      birthdate: null
-    };
-
-    this.formSubmitAttempt = false;
+    this.newUser = { id: null, name: null, birthdate: null };
     this.now = new Date();
-    this.minSelectableDate = { year: 1900, month: 1, day: 1 };
+
+    // set min/max dates to select on date picker
+    this.minSelectableDate = {
+      year: 1900,
+      month: 1,
+      day: 1
+    };
     this.maxSelectableDate = {
       year: this.now.getFullYear(),
       month: this.now.getMonth() + 1,
@@ -64,39 +68,46 @@ export class UserNewComponent implements OnInit {
   }
 
   onSubmit() {
+    if (!this.newUserForm.valid) return;
     this.formSubmitAttempt = true;
-    if (this.newUserForm.valid) {
-      const formResult = this.newUserForm.value;
-      const user: User = {
-        id: null,
-        name: formResult.name,
-        birthdate: this.dateFormatService.datepickerToString(formResult.birthdate)
-      };
 
-      console.log({ form: this.newUserForm.value, user: user });
+    const formResult = this.newUserForm.value;
+    const user: User = {
+      id: null,
+      name: formResult.name,
+      birthdate: this.dateFormatService.datepickerToString(formResult.birthdate)
+    };
 
-      this.apiService.createUser(user).subscribe(res => {
-        user.id = res.id || 3492;
-        this.resetForm();
-        this.openCorrectProcessModal(user);
+    // console.log({ form: this.newUserForm.value, user: user });
 
-        // once the user is created, we navigate back to user-list
-        this.router.navigate(["/user"]);
-      });
-    }
+    this.apiService.createUser(user).subscribe(res => {
+      // assign a hardcoded ID because mock API does not return an ID
+      user.id = res.id || 3492;
+      // clean form 
+      this.resetForm();
+      // open pop-up informing the user about the correct operation
+      this.openCorrectProcessModal(user);
+
+      // finally, navigate back to user-list
+      this.router.navigate(["/user"]);
+    });
   }
 
   openCorrectProcessModal(user: User) {
+    // open modal
     const modalRef = this.modalService.open(CorrectProcessModalComponent, {
       ariaLabelledBy: "modal-basic-title",
       centered: true,
       size: "md",
       windowClass: "modal-holder"
     });
+
+    // set modal parameters
     modalRef.componentInstance.process = "userAdded";
     modalRef.componentInstance.name = user.name;
     modalRef.componentInstance.id = user.id;
 
+    // auto-close modal after 3 seconds
     setTimeout(() => {
       modalRef.componentInstance.onClose();
     }, 3000);

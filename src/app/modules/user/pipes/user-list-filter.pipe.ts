@@ -2,6 +2,10 @@ import { Pipe, PipeTransform } from "@angular/core";
 
 import { User } from "../models/user";
 
+/**
+ * Pipe to filter the list of users based on a search string on
+ * the "name" property.
+ */
 @Pipe({ name: "userListFilter" })
 export class UserListFilterPipe implements PipeTransform {
   transform(list: User[], searchString: string): User[] {

@@ -3,8 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { TRANSLOCO_SCOPE, TranslocoModule } from '@ngneat/transloco';
 
+// own modules
 import { SharedModule } from "../shared/shared.module";
 import { PresentationRoutingModule } from './presentation-routing.module';
+
+// components
 import { PresentationPageComponent } from './presentation-page/presentation-page.component';
 
 @NgModule({

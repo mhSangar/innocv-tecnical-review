@@ -7,7 +7,7 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./presentation-page.component.scss']
 })
 export class PresentationPageComponent implements OnInit {
-
+  // icons
   faHome = faHome;
 
   constructor() { }
@@ -16,7 +16,6 @@ export class PresentationPageComponent implements OnInit {
   }
 
 }
-
 
 /*
 Copyright 2017-2018 Google Inc. All Rights Reserved.

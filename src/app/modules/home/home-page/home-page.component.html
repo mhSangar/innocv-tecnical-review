@@ -1,13 +1,14 @@
 <app-navbar></app-navbar>
 
 <div class="d-flex flex-column align-items-center">
+  <!-- Alert to inform user to select an entity -->
   <div class="alert alert-primary info-alert mt-5 d-flex justify-content-center" role="alert" *transloco="let t; read: 'home'">
     <fa-icon [icon]="faInfoCircle" class="mr-1 info-circle"></fa-icon>
 		{{ t('info-text') }}
   </div>
 
 	<div class="card-options-container d-flex justify-content-center flex-wrap mx-4">
-
+    <!-- User entity card -->
 		<div class="card bg-dark text-light m-2 card-as-link" routerLink="/user" *transloco="let t; read: 'home.users'">
 			<div class="card-header">
 				<fa-icon [icon]="faUser" class="mr-1"></fa-icon>
@@ -19,6 +20,7 @@
 			</div>
 		</div>
 
+    <!-- Another entity card -->
 		<div class="card bg-light m-2 card-as-link card-disabled" *transloco="let t; read: 'home.another'">
 			<div class="card-header text-dark-gray">
 				<fa-icon [icon]="faPlus" class="mr-1"></fa-icon>

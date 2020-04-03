@@ -13,6 +13,10 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 import { ErrorModalComponent } from "./modules/shared/modals/error-modal/error-modal.component";
 
+/**
+ * Intercepts outgoing requests and checks their status. If they fail,
+ * it launches a modal informing of the error.
+ */
 @Injectable()
 export class ApiErrorInterceptor implements HttpInterceptor {
   constructor(private injector: Injector, private modalService: NgbModal) {}
@@ -27,30 +31,32 @@ export class ApiErrorInterceptor implements HttpInterceptor {
         let errorStatus = "";
         let errorMessage = "";
 
+        // prepare modal msg depending from where the error comes
         if (error.error instanceof ErrorEvent) {
           // client-side error
           errorMessage = error.error.message;
         } else {
           // server-side error
           errorStatus = `${error.status} - `;
+          errorMessage = error.message;
         }
 
-        // launch modal
-        if (error.status !== 200) {}
-        
+        // launchs modal with an expanding animation
         const modalRef = this.modalService.open(ErrorModalComponent, {
           ariaLabelledBy: "modal-basic-title",
           centered: true,
           size: "md",
-          windowClass: "newUserModalClass"
+          windowClass: "modal-holder"
         });
+
+        // set contents of the modal
         modalRef.componentInstance.message = errorMessage;
         modalRef.componentInstance.status = errorStatus;
 
-        console.log({
-          errorMessage: errorMessage,
-          errorStatus: errorStatus
-        });
+        // console.log({
+        //   errorMessage: errorMessage,
+        //   errorStatus: errorStatus
+        // });
 
         return throwError(errorMessage);
       })

@@ -12,8 +12,8 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class AppComponent implements OnInit {
   // the locales the app supports
   locales = [
-    { label: "🇬🇧 English (UK)", value: "en" },
-    { label: "ES Español", value: "es" }
+    { label: "English (UK)", value: "en" },
+    { label: "Español (Spain)", value: "es" }
   ];
   // the user's locale
   detectedLocale = "";
@@ -31,10 +31,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    // detect and set user locale if match
     this.detectLocale();
+    // set page title for whole app
     this.setTitle();
   }
 
+  /**
+   * Sets the page title with Angular Title service.
+   */
   setTitle() {
     this.translocoService.selectTranslate("navbar.title").subscribe(title => {
       let newTitle = "🛠️ InnoCV";
@@ -43,6 +48,10 @@ export class AppComponent implements OnInit {
     });
   }
 
+  /**
+   * Detects user locale and updates it if there is a match
+   * with supported ones.
+   */
   detectLocale() {
     this.detectedLocale = this.getUsersLocale("en-GB");
 
@@ -69,7 +78,9 @@ export class AppComponent implements OnInit {
     return lang.substring(0, 2);
   }
 
-  // change locale/language at runtime
+  /**
+   * Change locale/language of transloco service at runtime
+   */
   updateLocale(locale) {
     console.log("%c 🍻 Updated language to " + locale, "color: #e2932d");
 

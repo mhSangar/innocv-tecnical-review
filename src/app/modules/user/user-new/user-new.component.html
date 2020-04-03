@@ -2,6 +2,8 @@
 
 <div class="d-flex justify-content-center" *transloco="let t; read: 'user.userNew'">
 	<div class="user-box d-flex justify-content-center align-items-center flex-column mx-3 my-4 p-4">
+
+		<!-- header of the box -->
 		<h5 class="section-title mb-0">
 			<a routerLink="/user" class="title-link">
 				<fa-icon [icon]="faUser"></fa-icon>
@@ -19,34 +21,39 @@
 			</p>
 		</div>
 
-		<form [formGroup]="newUserForm" class="d-flex flex-column container p-0" *transloco="let t; read: 'user.userNew.form'">
+		<!-- body of the box, with a form to set the attributes of the new user -->
+		<form [formGroup]="newUserForm" class="d-flex flex-column container p-0"
+			*transloco="let t; read: 'user.userNew.form'">
+
+			<!-- inputs -->
 			<div class="d-flex flex-row">
+
+				<!-- Name input -->
 				<div class="col-6">
-          <div class="d-flex flex-row justify-content-start">
-						  <label for="name">{{ t('name.label') }}</label>
-              <span class="text-danger ml-1 font-weight-bold">*</span>
-            </div>
+					<div class="d-flex flex-row justify-content-start">
+						<label for="name">{{ t('name.label') }}</label>
+						<span class="text-danger ml-1 font-weight-bold">*</span>
+					</div>
 					<input id="name" name="name" class="form-control" formControlName="name" required>
 					<div *ngIf="newUserForm.get('name').invalid && (newUserForm.get('name').dirty || newUserForm.get('name').touched)"
 						class="text-danger">
-
-						<span *ngIf="newUserForm.get('name').errors.required">
-                            {{ t('name.error') }}
-                        </span>
+						<span *ngIf="newUserForm.get('name').errors.required">{{ t('name.error') }}</span>
 					</div>
 				</div>
+
+				<!-- DatePicker -->
 				<div class="col-6">
 					<div class="form-group">
-            <div class="d-flex flex-row justify-content-start">
-						  <label for="dateOfBirth">{{ t('birthdate.label') }}</label>
-              <span class="text-danger ml-1 font-weight-bold">*</span>
-            </div>
+						<div class="d-flex flex-row justify-content-start">
+							<label for="dateOfBirth">{{ t('birthdate.label') }}</label>
+							<span class="text-danger ml-1 font-weight-bold">*</span>
+						</div>
 						<div class="input-group">
 							<input id="dateOfBirth" class="form-control" formControlName="birthdate" placeholder="{{ t('birthdate.placeholder') }}" name="dp" ngbDatepicker #dp="ngbDatepicker" [minDate]="minSelectableDate" [maxDate]="maxSelectableDate" required>
 							<div class="input-group-append">
 								<button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button">
-                                    <fa-icon [icon]="faCalendarAlt"></fa-icon>
-                                </button>
+                  <fa-icon [icon]="faCalendarAlt">
+                </fa-icon></button>
 							</div>
 						</div>
 						<div *ngIf="newUserForm.get('birthdate').invalid && (newUserForm.get('birthdate').dirty || newUserForm.get('birthdate').touched)"
@@ -58,6 +65,7 @@
 				</div>
 			</div>
 
+      <!-- button to send request to API  -->
 			<div class="container d-flex justify-content-center mt-4">
 				<button type="submit" (click)="onSubmit()" class="btn btn-success form-submit-btn" [disabled]="!newUserForm.valid">
           <fa-icon [icon]="faPlus" class="mr-1"></fa-icon>

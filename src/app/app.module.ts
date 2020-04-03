@@ -3,11 +3,7 @@ import { BrowserModule, Title } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-
-// ng bootstrap
 import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
-
-// transloco
 import { translocoLoader } from "./transloco.loader";
 import {
   TranslocoModule,
@@ -15,14 +11,9 @@ import {
   TranslocoConfig
 } from "@ngneat/transloco";
 import { TranslocoLocaleModule } from "@ngneat/transloco-locale";
-
-// locales
 import { registerLocaleData } from "@angular/common";
 import localeEn from "@angular/common/locales/en";
 import localeEs from "@angular/common/locales/es";
-
-registerLocaleData(localeEn, "en-GB");
-registerLocaleData(localeEs, "es-ES");
 
 // own modules
 import { SharedModule } from "./modules/shared/shared.module";
@@ -32,8 +23,14 @@ import { ApiErrorInterceptor } from "./api-error.interceptor";
 
 // components
 import { AppComponent } from "./app.component";
+
+// modals
 import { ErrorModalComponent } from "./modules/shared/modals/error-modal/error-modal.component";
 import { CorrectProcessModalComponent } from "./modules/shared/modals/correct-process-modal/correct-process-modal.component";
+
+// register locales on app
+registerLocaleData(localeEn, "en-GB");
+registerLocaleData(localeEs, "es-ES");
 
 @NgModule({
   imports: [

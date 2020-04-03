@@ -8,6 +8,7 @@ import { TranslocoService } from "@ngneat/transloco";
   styleUrls: ["./home-page.component.scss"]
 })
 export class HomePageComponent implements OnInit {
+  // icons
   faUser = faUser;
   faPlus = faPlus;
   faInfoCircle = faInfoCircle;

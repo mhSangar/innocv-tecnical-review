@@ -13,8 +13,8 @@ import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
     </div>
     <div class="modal-body">
       <p>{{ t('description') }}</p>
-      <div class="form-group">
-        <label class="error-details" for="errorMessage">{{ t('errorDetails') }}: </label>
+      <div class="form-group error-details">
+        <label for="errorMessage">{{ t('errorDetails') }}: </label>
         <textarea class="form-control" id="errorMessage" rows="3" disabled>{{ message }}</textarea>
       </div>
     </div>

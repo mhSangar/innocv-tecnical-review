@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 import { Router } from "@angular/router";
 import {
   faUser,
@@ -10,10 +10,11 @@ import {
   faTrash
 } from "@fortawesome/free-solid-svg-icons";
 
+// services
 import { ApiService } from "../services/api.service";
-import { User } from "../models/user";
 
-import moment from "moment";
+// models
+import { User } from "../models/user";
 
 @Component({
   selector: "app-user-list",
@@ -47,11 +48,14 @@ export class UserListComponent implements OnInit {
     this.users = this.apiService.getUsers();
   }
 
+  /**
+   * Toggles whether an user-ite is selec
+   */
   toggleIsSelected(clickedUser) {
     const isSelected = this.selectedUsers[clickedUser.id];
     this.selectedUsers[clickedUser.id] = isSelected ? false : true;
 
-    // get if any selected and how many
+    // get if any user is selected and how many
     let tmpSelectedNbr = 0;
     Object.keys(this.selectedUsers).forEach(userId => {
       if (this.selectedUsers[userId]) {

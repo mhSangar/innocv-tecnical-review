@@ -10,10 +10,14 @@ import {
   NgbDateParserFormatter
 } from "@ng-bootstrap/ng-bootstrap";
 
+// own modules
 import { SharedModule } from "../shared/shared.module";
 import { UsersRoutingModule } from "./user-routing.module";
+
+// pipes
 import { UserListFilterPipe } from "./pipes/user-list-filter.pipe";
 
+// components
 import { UserListComponent } from "./user-list/user-list.component";
 import { UserNewComponent } from "./user-new/user-new.component";
 import { UserEditComponent } from "./user-edit/user-edit.component";
