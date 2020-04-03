@@ -22,8 +22,16 @@
     "subtitle": "Nuevo usuario",
     "description": "Esta sección le permite crear un nuevo usuario.",
     "form": {
-      "name": {"label": "Nombre", "error": "El nombre es obligatorio"},
-      "birthdate": {"label": "Fecha de nacimiento", "error": "La fecha de nacimiento es obligatoria"}
+      "name": {
+        "label": "Nombre",
+        "error": "El nombre es obligatorio"
+      },
+      "birthdate": {
+        "label": "Fecha de nacimiento",
+        "error": "La fecha de nacimiento es obligatoria",
+        "placeholder": "AAAA-MM-DD"
+      },
+      "submitBtn": "Crear"
     }
   }
 }

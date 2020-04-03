@@ -11,7 +11,7 @@ import { Observable, throwError } from "rxjs";
 import { retry, catchError } from "rxjs/operators";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
-import { ErrorModalComponent } from "./modules/shared/error-modal/error-modal.component";
+import { ErrorModalComponent } from "./modules/shared/modals/error-modal/error-modal.component";
 
 @Injectable()
 export class ApiErrorInterceptor implements HttpInterceptor {
