@@ -1,10 +1,13 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
 import { TRANSLOCO_SCOPE, TranslocoModule } from "@ngneat/transloco";
 import { TranslocoLocaleModule } from "@ngneat/transloco-locale";
-import { HttpClientModule } from "@angular/common/http";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { SharedModule } from "../shared/shared.module";
+import { UserListFilterPipe } from "./pipes/user-list-filter.pipe";
 import { UsersRoutingModule } from "./user-routing.module";
 import { UserListComponent } from "./user-list/user-list.component";
 
@@ -12,17 +15,19 @@ import { UserListComponent } from "./user-list/user-list.component";
   imports: [
     CommonModule,
     UsersRoutingModule,
+    FontAwesomeModule,
+    HttpClientModule,
+    FormsModule,
     TranslocoModule,
     TranslocoLocaleModule.init({
       langToLocaleMapping: {
-        en: 'en-GB',
-        es: 'es-ES'
+        en: "en-GB",
+        es: "es-ES"
       }
     }),
-    HttpClientModule,
     SharedModule
   ],
-  declarations: [UserListComponent],
+  declarations: [UserListComponent, UserListFilterPipe],
   providers: [{ provide: TRANSLOCO_SCOPE, useValue: "user" }],
   bootstrap: [UserListComponent]
 })

@@ -1,0 +1,15 @@
+{
+  "title": "Usuarios",
+  "description": "Esta sección le permite listar todos los usuarios proporcionados por una llamada asíncrona a una API.",
+  "filter": {
+    "placeholder": "Filtrar por nombre..."
+  },
+  "list": {
+    "headers": {
+      "id": "ID",
+      "name": "Nombre",
+      "birthdate": "Fecha de nacimiento"
+    },
+    "noItemsLabel": "No se han encontrado usuarios"
+  }
+}

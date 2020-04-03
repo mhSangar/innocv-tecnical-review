@@ -14,16 +14,23 @@ export class NavBarComponent implements OnInit {
     { label: "🇬🇧 English (UK)", value: "en" },
     { label: "ES Español", value: "es" }
   ];
-  title = "Title";
+  title = "";
 
-  constructor(private service: TranslocoService) {}
+  constructor(private translocoService: TranslocoService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.translocoService
+    //   .selectTranslate("navbar.title")
+    //   .subscribe(translatedTitle => {
+    //     let newTitle = "";
+    //     this.title = translatedTitle !== "navbar.title" ? translatedTitle : "";
+    //   });
+  }
 
   updateLang(lang: string) {
     console.log("%c 🍻 Updated language to " + lang, "color: #e2932d");
 
-    this.service.setActiveLang(lang);
+    this.translocoService.setActiveLang(lang);
   }
 }
 

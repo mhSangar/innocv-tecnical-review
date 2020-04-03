@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs/Observable";
+import { faUser, faFilter } from "@fortawesome/free-solid-svg-icons";
 
 import { ApiService } from "../services/api.service";
 import { User } from "../models/user";
@@ -12,10 +13,16 @@ import moment from "moment";
   styleUrls: ["./user-list.component.scss"]
 })
 export class UserListComponent implements OnInit {
-  now = moment();
-  users: Observable<Array<User>>;
+  // attributes
+  users: Observable<User[]>;
+  searchString: string;
+  // icons
+  faUser = faUser;
+  faFilter = faFilter;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {
+    this.searchString = "";
+  }
 
   ngOnInit() {
     this.users = this.apiService.getUsers();

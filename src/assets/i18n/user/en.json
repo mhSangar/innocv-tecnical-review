@@ -1,0 +1,15 @@
+{
+  "title": "Users",
+  "description": "This section allows you to list all users provided by an async call to an API.",
+  "filter": {
+    "placeholder": "Filter by name..."
+  },
+  "list": {
+    "headers": {
+      "id": "ID",
+      "name": "Name",
+      "birthdate": "Date of birth"
+    },
+    "noItemsLabel": "No users found"
+  }
+}
